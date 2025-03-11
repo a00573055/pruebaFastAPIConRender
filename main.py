@@ -23,8 +23,8 @@ class FormData(BaseModel):
 
 @aiocron.crontab("*/5 * * * *")
 async def self_ping():
-	response.requests.get("https://pruebafastapiconrender.onrender.com/")
-	print(response["message": "Hello World])
+	response=requests.get("https://testfastapi-y81m.onrender.com")
+	print(response["message"])
 	
 
 @app.get("/")
