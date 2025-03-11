@@ -2,6 +2,8 @@ from fastapi import FastAPI, Form
 from typing import Annotated
 from pydantic import BaseModel  
 from fastapi.middleware.cors import CORSMiddleware
+import aiocron
+import requests
 
 app = FastAPI()
 
@@ -18,6 +20,11 @@ app.add_middleware(
 class FormData(BaseModel):
 	primero: str
 	segundo: str
+
+@aiocron.crontab("*/5 * * * *")
+async def self_ping():
+	response.requests.get("https://pruebafastapiconrender.onrender.com/")
+	print(response["message": "Hello World])
 	
 
 @app.get("/")
